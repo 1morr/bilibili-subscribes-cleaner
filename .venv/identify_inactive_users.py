@@ -19,42 +19,13 @@ inactive_users = [
 ]
 
 
-
-
-#print(json.dumps(inactive_users, ensure_ascii=False, indent=4))
-
-'''print(inactive_users[1])
-print(data['users_with_novid'][-1])
-print(inactive_users[-1])'''
-
-
 for i in data['users_with_novid']:
     inactive_users.append(i)
 
 
 
-#print(json.dumps(inactive_users, ensure_ascii=False, indent=4))
-
-'''for i in inactive_users:
-    print(i)
-    print(i['UID'])'''
-
-
 # Filter items with the tag '特别关注' in '分組'
 items_with_special_attention = [item for item in inactive_users if '特别关注' in item['分組']]
-
-'''# Display the filtered items
-for item in items_with_special_attention:
-    print(item)'''
-
-
-'''# Filter items with at least one tag in '分組'
-items_with_tags = [item for item in inactive_users if item['分組']]
-
-# Display the filtered items
-for item in items_with_tags:
-    print(item)'''
-
 
 
 # Filter items with no tags in '分組'
@@ -67,7 +38,7 @@ for item in items_without_tags:
     print(item)
     items_without_tags_uids.append(item['UID'])
 
-#print(len(items_without_tags))
+
 print(items_without_tags_uids)
 print(len(items_without_tags_uids))
 print(len(inactive_users))

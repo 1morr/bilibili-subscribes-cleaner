@@ -22,34 +22,7 @@ mid_to_tag = {d['mid']: d['tag'] for d in uid_data}
 
 for i in user_vid_list:
     print(i)
-    '''if i['user_vid']['data']['archives'] and i['user_vid']['data']['archives'][0] == True:
-        newest_videoname = i['user_vid']['data']['archives'][0]['title']
-        latest_pubtime_unix = i['user_vid']['data']['archives'][0]['pubdate']
-        bvid = i['user_vid']['data']['archives'][0]['bvid']
-        # Convert UNIX timestamp to a datetime object
-        dt = datetime.datetime.utcfromtimestamp(latest_pubtime_unix)
-        # Define the target timezone
-        target_timezone = pytz.timezone('Asia/Shanghai')
-        # Convert the datetime object to the target timezone
-        latest_pubtime_localized = dt.replace(tzinfo=pytz.utc).astimezone(target_timezone)
-
-        video_dict[i['mid']] = {
-            'newest_videoname': newest_videoname,
-            'latest_pubtime_unix': latest_pubtime_unix,
-            'latest_pubtime_localized': latest_pubtime_localized,
-            'bvid': bvid,
-            'user_name': mid_to_name[i['mid']],
-            'tag': mid_to_tag[i['mid']]
-        }
-
-    else:
-        user_with_no_vid_or_others_dict[i['mid']] = {
-            'user_name': mid_to_name[i['mid']],
-            'tag': mid_to_tag[i['mid']]
-        }'''
-
-
-    try:
+    try: # Handle when the user has no videos
         newest_videoname = i['user_vid']['data']['archives'][0]['title']
         latest_pubtime_unix = i['user_vid']['data']['archives'][0]['pubdate']
         bvid = i['user_vid']['data']['archives'][0]['bvid']
@@ -72,13 +45,14 @@ for i in user_vid_list:
         error_mids.append(i['mid'])
         print(f"Error occurred for mid: {error_mids}")
 
-        try:
+        try: # Handle when mid is not in user_data.json usually happen when you have unsubbed users after the user_data.json is collected
             user_with_no_vid_or_others_dict[i['mid']] = {
                 'user_name': mid_to_name[i['mid']],
                 'tag': mid_to_tag[i['mid']]
             }
         except KeyError:
             pass
+
     except KeyError:
         pass
 
