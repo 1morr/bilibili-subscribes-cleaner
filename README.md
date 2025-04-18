@@ -1,4 +1,7 @@
 # bilibili-subscribes-cleaner
+
+整合版：https://github.com/1morr/bilibili-subscribes-cleaner-Java <br>
+
 找出超過一年未有更新的用戶並導出他們的uid
 
 使用以下的油猴插件來導出你所關注的用戶
