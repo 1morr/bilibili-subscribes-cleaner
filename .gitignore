@@ -1,0 +1,11 @@
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+
+# 本地数据与中间产物（由脚本生成或从插件导出，勿提交）
+export_uids.json
+user_data.json
+output.json
+inactive_users.txt
